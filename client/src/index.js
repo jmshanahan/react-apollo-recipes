@@ -22,7 +22,7 @@ import Navbar from "./components/navbar";
 //uri: "http:///graphql",
 
 const client = new ApolloClient({
-  uri: "http://react-apollo-joes-recipes.herokuapp.com/graphql",
+  uri: "https://react-apollo-joes-recipes.herokuapp.com/graphql",
   fetchOptions: {
     credentials: "include"
   },
