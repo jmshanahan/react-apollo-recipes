@@ -1,0 +1,66 @@
+I cannot access the data from the graphgl query  in the RecipePage even though it is appearing on the console.log.
+Below show what is appearing on the browser console
+But data.getRecipe.name cannot be accessed.
+Why isn't {data.getRecipe.name} working
+
+
+{data: {…}, variables: {…}, refetch: ƒ, fetchMore: ƒ, updateQuery: ƒ, …}
+client:DefaultClient {defaultOptions: {…}, resetStoreCallbacks: Array(0), link: ApolloLink, cache: InMemoryCache, store: DataStore, …}
+data:
+getRecipe:
+category:"Sandwiches"
+createdDate:"Tue Jul 17 2018 20:03:12 GMT+0100 (BST)"
+description:"A tasty sandwich"
+instructions:"Grill it"
+likes:0
+name:"Grilled Cheese Sandwich"
+__typename:"Recipe"
+_id:"5b4e3d70194a7a4bface24e9"
+Symbol(id):"Recipe:5b4e3d70194a7a4bface24e9"
+// REMOVED STUFF FROM HERE
+
+variables:{_id: "5b4e3d70194a7a4bface24e9"}
+
+//query
+export const GET_RECIPE = gql`
+  query($_id: ID!) {
+    getRecipe(_id: $_id) {
+      _id
+      name
+      category
+      description
+      instructions
+      createdDate
+      likes
+    }
+  }
+`;
+
+The getRecipe function
+
+import React from "react";
+import { withRouter } from "react-router-dom";
+import { Query } from "react-apollo";
+import { GET_RECIPE } from "../../queries";
+const RecipePage = ({ match }) => {
+  const { _id } = match.params;
+  console.log(_id);
+  return (
+    <Query query={GET_RECIPE} variables={{ _id }}>
+      {(data, loading, error) => {
+        if (loading) return <div>Loading</div>;
+        if (error) return <div>Error</div>;
+        console.log(data);
+        return (
+          <div className="App">
+            <button>Like</button>
+            //I CANNOT ACCESS THE DATA EVEN THOUGH ON THE CONSOLE.LOG(data) it is showing up 
+            <h2>{data.getRecipe.name}</h2>
+          </div>
+        );
+      }}
+    </Query>
+  );
+};
+export default withRouter(RecipePage);
+
