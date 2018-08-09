@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const jwt = require("jsonwebtoken")
-require("dotenv").config({ path: "variables.env" });
+require("dotenv").config({ path: "devvariables.env" });
 
 const Recipe = require("./models/Recipe");
 const User = require("./models/User");
@@ -52,9 +52,9 @@ app.use( async (req, res, next) => {
   next()
 })
 
-
-// app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
-
+if (process.env.NODE_ENV === "development"){
+app.use("/graphiql", graphiqlExpress({ endpointURL: "/graphql" }));
+}
 // Connect schemas with GraphQL
 // Ref to https://github.com/jmshanahan/nasatographql/blob/master/server/server.js
 // In this example it is done through a callback
