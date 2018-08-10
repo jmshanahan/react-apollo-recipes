@@ -28,12 +28,12 @@ mongoose
 
 // Initialize the application
 const app = express();
-// const corsOptions = {
-//   origin: "http://localhost:3000",
-//   credentials: true
-// };
-// app.use(cors(corsOptions));
-app.use(cors("*"));
+const corsOptions = {
+  origin: "http://localhost:3000",
+  credentials: true
+};
+app.use(cors(corsOptions));
+// app.use(cors("*"));
 
 // Set up authentication middleware
 app.use( async (req, res, next) => {

@@ -8,9 +8,11 @@
     "lodash": "^4.17.10",
     "react": "^16.4.1",
     "react-apollo": "^2.1.9",
+    "react-ckeditor-component": "^1.1.0",
     "react-dom": "^16.4.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-spinners": "^0.3.3",
     "reinstall": "^2.0.0"
   },
   "scripts": {
