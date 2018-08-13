@@ -52,9 +52,9 @@ exports.resolvers = {
   },
   // context argument is for passing in our models in this case Recipe
   Mutation: {
-    addRecipe: async(root, {name, imageUrl, description, category, instructions, username}, {Recipe}) => {
+    addRecipe: async(root, {name, description, category, instructions, username}, {Recipe}) => {
         const newRecipe = await new Recipe({
-          name, imageUrl,description,category,instructions,username
+          name, description,category,instructions,username
         }).save();
         return newRecipe;
     },

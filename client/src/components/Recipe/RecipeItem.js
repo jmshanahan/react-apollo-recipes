@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-export default ({ _id, name, imageUrl, category }) => (
+export default ({ _id, name, category }) => (
   <li className="card">
     <span className={category}>{category}</span>
     <div className="card-text">

@@ -8,7 +8,6 @@ import withAuth from "../withAuth";
 
 const initialState = {
   name: "",
-  imageUrl: "",
   instructions: "",
   category: "Breakfast",
   description: "",
@@ -54,9 +53,8 @@ class AddRecipe extends React.Component {
     });
   };
   validateForm = () => {
-    const { name, imageUrl, category, description, instructions } = this.state;
-    const isInvalid =
-      !name || !imageUrl || !category || !description || !instructions;
+    const { name, category, description, instructions } = this.state;
+    const isInvalid = !name || !category || !description || !instructions;
     return isInvalid;
   };
   updateCache = (cache, { data: { addRecipe } }) => {
@@ -70,20 +68,12 @@ class AddRecipe extends React.Component {
   };
 
   render() {
-    const {
-      name,
-      imageUrl,
-      category,
-      description,
-      instructions,
-      username
-    } = this.state;
+    const { name, category, description, instructions, username } = this.state;
     return (
       <Mutation
         mutation={ADD_RECIPE}
         variables={{
           name,
-          imageUrl,
           category,
           description,
           instructions,
@@ -109,13 +99,7 @@ class AddRecipe extends React.Component {
                   onChange={this.handleChange}
                   value={name}
                 />
-                <input
-                  type="text"
-                  name="imageUrl"
-                  placeholder="Recipe image"
-                  onChange={this.handleChange}
-                  value={imageUrl}
-                />
+
                 <select
                   name="category"
                   onChange={this.handleChange}
