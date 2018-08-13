@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const cors = require("cors");
 const jwt = require("jsonwebtoken")
-require("dotenv").config({ path: "devvariables.env" });
+require("dotenv").config({ path: "variables.env" });
 
 const Recipe = require("./models/Recipe");
 const User = require("./models/User");
@@ -26,15 +26,19 @@ mongoose
   .then(() => console.log("DB connected"))
   .catch(err => console.log(err));
 
-// Initialize the application
-const app = express();
-const corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true
-};
-app.use(cors(corsOptions));
-// app.use(cors("*"));
+  const app = express();
+  if (process.env.NODE_ENV === "development"){
 
+    // Initialize the application
+    const corsOptions = {
+      origin: "http://localhost:3000",
+      credentials: true
+    };
+    app.use(cors(corsOptions));
+  }else{
+    app.use(cors("*"));
+  }
+  
 // Set up authentication middleware
 app.use( async (req, res, next) => {
   const token = req.headers["authorization"];
