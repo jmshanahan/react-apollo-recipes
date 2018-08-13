@@ -27,18 +27,18 @@ mongoose
   .catch(err => console.log(err));
 
   const app = express();
-  if (process.env.NODE_ENV === "development"){
+  // if (process.env.NODE_ENV === "development"){
 
-    // Initialize the application
-    const corsOptions = {
-      origin: "http://localhost:3000",
-      credentials: true
-    };
-    app.use(cors(corsOptions));
-  }else{
+  //   // Initialize the application
+  //   const corsOptions = {
+  //     origin: "http://localhost:3000",
+  //     credentials: true
+  //   };
+  //   app.use(cors(corsOptions));
+  // }else{
     app.use(cors("*"));
-  }
-  
+  // }
+
 // Set up authentication middleware
 app.use( async (req, res, next) => {
   const token = req.headers["authorization"];

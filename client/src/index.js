@@ -21,12 +21,12 @@ import { ApolloProvider } from "react-apollo";
 import Navbar from "./components/navbar";
 //uri: "http:///graphql",
 
-const uriPath =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:4444"
-    : "https://react-apollo-joes-recipes.herokuapp.com";
+// const uriPath =
+//   process.env.NODE_ENV === "development"
+//     ? "http://localhost:4444"
+//     : "https://react-apollo-joes-recipes.herokuapp.com";
 const client = new ApolloClient({
-  uri: `${uriPath}/graphql`,
+  uri: `https://react-apollo-joes-recipes.herokuapp.com/graphql`,
   fetchOptions: {
     credentials: "include"
   },
